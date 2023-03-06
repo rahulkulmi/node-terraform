@@ -2,7 +2,7 @@
     "requiresCompatibilities": [
         "FARGATE"
     ],
-    "family": "node_terraform_ecs",
+    "family": "node_terraform_ecs_app",
     "containerDefinitions": [
         {
             "name": "node_terraform_ecs_app",
