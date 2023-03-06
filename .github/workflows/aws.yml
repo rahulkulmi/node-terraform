@@ -8,7 +8,7 @@ on:
 
 env:
   AWS_REGION: us-west-2
-  ECR_REPOSITORY: 708980201424.dkr.ecr.us-west-2.amazonaws.com/newput/node-terraform
+  ECR_REPOSITORY: newput/node-terraform
   ECS_SERVICE: node-terraform-dev-service
   ECS_CLUSTER: newput-dev
   ECS_TASK_DEFINITION: templates/ecs.json
@@ -31,10 +31,6 @@ jobs:
         uses: devops-infra/action-terraform-validate@v0.3
         # with:
         #   dir_filter: modules/aws,modules/gcp
-
-      # - name: Download task definition
-      #   run: |
-      #     aws ecs describe-task-definition --task-definition my-task-definition-family --query taskDefinition > task-definition.json
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
