@@ -2,10 +2,10 @@
     "requiresCompatibilities": [
         "FARGATE"
     ],
-    "family": "node_terraform_ecs_app",
+    "family": "node-terraform-task-definition",
     "containerDefinitions": [
         {
-            "name": "node_terraform_ecs_app",
+            "name": "newput-dev",
             "image": "708980201424.dkr.ecr.us-west-2.amazonaws.com/newput/node-terraform:latest",
             "essential": true,
             "cpu": "1024",
