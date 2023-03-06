@@ -7,16 +7,18 @@ on:
     branches: ["main"]
 
 env:
-  AWS_REGION: us-west-2 # set this to your preferred AWS region, e.g. us-west-2
-  ECR_REPOSITORY: newput/node-terraform # 600023384173.dkr.ecr.ap-south-1.amazonaws.com/demo_ecs_app           # set this to your Amazon ECR repository name
-  ECS_SERVICE: node-terraform-dev-service # set this to your Amazon ECS service name
-  ECS_CLUSTER: newput-dev # set this to your Amazon ECS cluster name
-  ECS_TASK_DEFINITION:
-    templates/ecs.json # set this to the path to your Amazon ECS task definition
-    # file, e.g. .aws/task-definition.json
-  CONTAINER_NAME:
-    newput-dev # set this to the name of the container in the
-    # containerDefinitions section of your task definition
+  AWS_REGION: us-west-2
+  # 600023384173.dkr.ecr.ap-south-1.amazonaws.com/demo_ecs_app
+  # set this to your Amazon ECR repository name
+  ECR_REPOSITORY: newput/node-terraform
+  ECS_SERVICE: node-terraform-dev-service
+  ECS_CLUSTER: newput-dev
+  # set this to the path to your Amazon ECS task definition
+  # file, e.g. .aws/task-definition.json
+  ECS_TASK_DEFINITION: templates/ecs.json
+  # set this to the name of the container in the
+  # containerDefinitions section of your task definition
+  CONTAINER_NAME: node-terraform-dev-app
 
 permissions:
   contents: read
