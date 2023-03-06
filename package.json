@@ -1,0 +1,22 @@
+{
+  "name": "node-terraform",
+  "version": "1.0.0",
+  "description": "Test app for terraform code",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rahulkulmi/node-terraform.git"
+  },
+  "author": "Rahul Kulmi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rahulkulmi/node-terraform/issues"
+  },
+  "homepage": "https://github.com/rahulkulmi/node-terraform#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
