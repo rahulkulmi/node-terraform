@@ -5,9 +5,7 @@ WORKDIR /app
 COPY . /app
 
 # Install dependencies
-RUN npm ci \
-    && npm run build \
-    && npm prune --prod
+RUN npm ci && npm prune --prod
 
 EXPOSE 80
 
