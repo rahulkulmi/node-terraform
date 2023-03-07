@@ -7,7 +7,7 @@ COPY . /app
 # Install dependencies
 RUN npm ci && npm prune --prod
 
-EXPOSE 80
+EXPOSE 8080
 
 CMD ["npm", "start"]
 
