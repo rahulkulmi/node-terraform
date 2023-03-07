@@ -14,6 +14,10 @@ env:
   ECS_TASK_DEFINITION: templates/ecs.json
   CONTAINER_NAME: node-terraform-dev-app # set this to the name of the container in the # containerDefinitions section of your task definition
 
+defaults:
+  run:
+    working-directory: ./infra/
+
 permissions:
   contents: read
 
