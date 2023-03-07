@@ -8,7 +8,7 @@ data "template_file" "app" {
 
   vars = {
     # app_image      = var.app_image
-    app_image      = aws_ecr_repository.ecs_app.repository_url
+    app_image      = data.aws_ecr_repository.repo.repository_url # aws_ecr_repository.ecs_app.repository_url
     app_port       = var.app_port
     fargate_cpu    = var.fargate_cpu
     fargate_memory = var.fargate_memory

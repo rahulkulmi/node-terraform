@@ -10,3 +10,7 @@ resource "aws_ecr_repository" "ecs_app" {
   }
 }
 */
+
+data "aws_ecr_repository" "repo" {
+  name = "newput/node-terraform"
+}
