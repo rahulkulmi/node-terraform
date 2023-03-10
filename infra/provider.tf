@@ -5,15 +5,14 @@ terraform {
   required_providers {
     aws = {
       source = "hashicorp/aws"
-      # version = "~> 4.0"
-      version = "3.74.0"
+      version = "~> 4.0"
     }
   }
 }
 
-provider "aws" {
-  region = var.aws_region
-}
+# provider "aws" {
+#   region = var.aws_region
+# }
 
 provider "aws" {
   alias  = "dns"
