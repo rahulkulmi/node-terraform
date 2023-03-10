@@ -89,19 +89,19 @@ jobs:
 
       - name: Terraform Init
         id: init
-        run: terraform init
+        run: terraform init -backend-config=vars/dev_backend.tfvars -backend-config=region=$AWS_REGION -backend-config=access_key=secrets.AWS_ACCESS_KEY_ID -backend-config=secret_key=secrets.AWS_SECRET_ACCESS_KEY
 
       - name: Terraform Validate
         id: validate
         run: terraform validate -no-color
 
-      - name: Terraform Plan
+      - name: Terraform Plan -var-file=vars/tuvoli_dev.tfvars -var=image_tag=latest -out tfplan -detailed-exitcode
         id: plan
         run: terraform plan -no-color
 
-      - name: Terraform Apply
-        id: apply
-        run: terraform apply -auto-approve
+      # - name: Terraform Apply
+      #   id: apply
+      #   run: terraform apply -auto-approve
 
       # - name: Fill in the new image ID in the Amazon ECS task definition
       #   id: task-def
