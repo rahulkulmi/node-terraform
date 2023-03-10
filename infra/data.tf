@@ -4,10 +4,10 @@ data "aws_ecr_repository" "repo" {
 
 data "template_file" "env" {
   template = file("${path.module}/templates/env.json.tmpl")
-  count    = length(var.env_config)
+  count    = length(var.env_vars)
   vars = {
-    name  = element(keys(var.env_config), count.index)
-    value = element(values(var.env_config), count.index)
+    name  = element(keys(var.env_vars), count.index)
+    value = element(values(var.env_vars), count.index)
   }
 }
 
