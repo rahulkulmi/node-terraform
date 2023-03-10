@@ -76,11 +76,13 @@ variable "image_name" {
 }
 
 variable "env_vars" {
-  type    = map(string)
-  default = {}
+  type        = map(string)
+  default     = {}
+  description = "Map of environment vars to make is easier to pass"
 }
 
 variable "secret_arns" {
-  type    = map(string)
-  default = {}
+  type        = map(string)
+  default     = {}
+  description = "Map of secrets to use in the template"
 }

@@ -4,11 +4,12 @@ resource "aws_ecs_cluster" "main" {
 }
 
 data "template_file" "app" {
-  template = file("../templates/ecs_app.json.tpl")
+  template = file("../templates/ecs_app.json.tmpl")
 
-  vars = {
+  vars = merge({
     # app_image      = var.app_image
-    app_image      = data.aws_ecr_repository.repo.repository_url # aws_ecr_repository.ecs_app.repository_url
+    # app_image      = data.aws_ecr_repository.repo.repository_url # aws_ecr_repository.ecs_app.repository_url
+    app_image      = "${data.aws_ecr_repository.repo.repository_url}:${var.image_tag}" # aws_ecr_repository.ecs_app.repository_url
     app_port       = var.app_port
     fargate_cpu    = var.fargate_cpu
     fargate_memory = var.fargate_memory
@@ -17,7 +18,10 @@ data "template_file" "app" {
     app_name       = var.app_name
     stage          = var.stage
     # tag            = var.tag
-  }
+    }, {
+    env_config    = join(",", data.template_file.env.*.rendered)
+    secret_config = join(",", data.template_file.secrets.*.rendered)
+  })
 }
 
 resource "aws_ecs_task_definition" "app" {
