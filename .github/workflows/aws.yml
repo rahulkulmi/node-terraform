@@ -95,9 +95,9 @@ jobs:
         id: validate
         run: terraform validate -no-color
 
-      - name: Terraform Plan -var-file=vars/dev.tfvars -var=image_tag=latest -out tfplan -detailed-exitcode
+      - name: Terraform Plan
         id: plan
-        run: terraform plan -no-color
+        run: terraform plan -var-file=vars/dev.tfvars -var=image_tag=latest -out tfplan -detailed-exitcode
 
       # - name: Terraform Apply
       #   id: apply
