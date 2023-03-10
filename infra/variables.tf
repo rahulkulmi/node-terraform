@@ -75,6 +75,11 @@ variable "image_name" {
   default     = "newput/node-terraform"
 }
 
+variable "image_tag" {
+  description = "Image for ECS Task"
+  default     = "latest"
+}
+
 variable "env_vars" {
   type        = map(string)
   default     = {}
