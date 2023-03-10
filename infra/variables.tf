@@ -13,13 +13,13 @@ variable "dns_role" {
   default = "arn:aws:iam::708980201424:role/newput-dev-Route53FullAccess"
 }
 
-variable "access_key" {
-  description = "My AWS access key"
-}
+# variable "access_key" {
+#   description = "My AWS access key"
+# }
 
-variable "secret_key" {
-  description = "My AWS secret key"
-}
+# variable "secret_key" {
+#   description = "My AWS secret key"
+# }
 
 variable "stage" {
   default = "dev"
