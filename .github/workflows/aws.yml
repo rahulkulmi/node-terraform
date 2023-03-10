@@ -11,7 +11,7 @@ env:
   ECR_REPOSITORY: newput/node-terraform
   ECS_SERVICE: node-terraform-dev-service
   ECS_CLUSTER: newput-dev
-  ECS_TASK_DEFINITION: templates/ecs.json
+  ECS_TASK_DEFINITION: infra/templates/ecs.json
   CONTAINER_NAME: node-terraform-dev-app # set this to the name of the container in the # containerDefinitions section of your task definition
 
 permissions:
