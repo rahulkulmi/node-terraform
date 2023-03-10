@@ -9,6 +9,10 @@ variable "aws_vpc_name" {
   default     = "newput-dev"
 }
 
+variable "dns_role" {
+  default = "arn:aws:iam::708980201424:role/newput-dev-Route53FullAccess"
+}
+
 variable "stage" {
   default = "dev"
 }

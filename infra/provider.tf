@@ -13,3 +13,12 @@ terraform {
 provider "aws" {
   region = var.aws_region
 }
+
+provider "aws" {
+  alias  = "dns"
+  region = var.aws_region
+
+  assume_role {
+    role_arn = var.dns_role
+  }
+}
