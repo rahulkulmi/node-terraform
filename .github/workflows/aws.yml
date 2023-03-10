@@ -13,6 +13,7 @@ env:
   ECS_CLUSTER: newput-dev
   ECS_TASK_DEFINITION: templates/ecs.json
   CONTAINER_NAME: node-terraform-dev-app # set this to the name of the container in the # containerDefinitions section of your task definition
+  DOCKER_IMAGE_TAG: latest
 
 permissions:
   contents: read
@@ -68,6 +69,8 @@ jobs:
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
           echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
+          DOCKER_IMAGE_TAG = $IMAGE_TAG
+          echo "$DOCKER_IMAGE_TAG"
 
   deploy:
     name: Deploy on DEV
@@ -89,13 +92,13 @@ jobs:
 
       - name: Terraform Init
         id: init
-        run: terraform init -backend-config=vars/dev_backend.tfvars -backend-config=region=$AWS_REGION -backend-config=access_key=${{secrets.AWS_ACCESS_KEY_ID}} -backend-config=secret_key=${{secrets.AWS_SECRET_ACCESS_KEY}}
+        run: terraform init -backend-config=vars/dev_backend.tfvars -backend-config=region=$AWS_REGION -backend-config=access_key=${{ secrets.AWS_ACCESS_KEY_ID }} -backend-config=secret_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
       - name: Terraform Validate
         id: validate
         run: terraform validate -no-color
 
-      - name: Terraform Plan -var-file=vars/tuvoli_dev.tfvars -var=image_tag=latest -out tfplan -detailed-exitcode
+      - name: Terraform Plan -var-file=vars/dev.tfvars -var=image_tag=latest -out tfplan -detailed-exitcode
         id: plan
         run: terraform plan -no-color
 
