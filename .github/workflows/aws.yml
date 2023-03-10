@@ -98,11 +98,10 @@ jobs:
       - name: Terraform Plan
         id: plan
         run: terraform plan -var-file=vars/dev.tfvars -var=image_tag=latest -var=access_key=${{ secrets.AWS_ACCESS_KEY_ID }} -var=secret_key=${{ secrets.AWS_SECRET_ACCESS_KEY }} -out tfplan
-        # run: terraform plan -var-file=vars/dev.tfvars -var=image_tag=latest -var=region=$AWS_REGION -var=access_key=${{ secrets.AWS_ACCESS_KEY_ID }} -var=secret_key=${{ secrets.AWS_SECRET_ACCESS_KEY }} -out tfplan -detailed-exitcode
 
-      # - name: Terraform Apply
-      #   id: apply
-      #   run: terraform apply -auto-approve
+      - name: Terraform Apply
+        id: apply
+        run: terraform apply -auto-approve tfplan
 
       # - name: Fill in the new image ID in the Amazon ECS task definition
       #   id: task-def

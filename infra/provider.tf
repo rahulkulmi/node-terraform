@@ -16,11 +16,3 @@ provider "aws" {
   secret_key = var.secret_key
 }
 
-# provider "aws" {
-#   # alias  = "dns"
-#   region = var.aws_region
-
-#   # assume_role {
-#   #   role_arn = var.dns_role
-#   # }
-# }
