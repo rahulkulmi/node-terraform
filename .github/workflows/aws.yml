@@ -65,8 +65,8 @@ jobs:
           # be deployed to ECS.
           echo "github.event.repository.name"
           echo ${{ github.event.repository.name }}
-          echo "github"
-          echo ${{ github }}
+          echo "github.event.push_id"
+          echo ${{ github.event.push_id }}
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -f Dockerfile .
           docker tag $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG $ECR_REGISTRY/$ECR_REPOSITORY:latest
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
@@ -85,6 +85,15 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+
+      - name: git info check
+        run: |
+          echo "github.event.push_id"
+          echo ${{ github.event.push_id }}
+          echo "github.sha"
+          echo ${{ github.sha }}
+          echo "github.head_ref"
+          echo ${{ github.head_ref }}
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
