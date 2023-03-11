@@ -10,7 +10,7 @@ app.get('/user', function (req, res) {
 });
 
 app.get('/test', function (req, res) {
-  res.send('Main page test get api.');
+  res.send('Main page test update checking testing get api.');
 });
 
 app.listen(8080, function () {
