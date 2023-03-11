@@ -63,10 +63,6 @@ jobs:
           # Build a docker container and
           # push it to ECR so that it can
           # be deployed to ECS.
-          echo "github.event.repository.name"
-          echo ${{ github.event.repository.name }}
-          echo "github.event.push_id"
-          echo ${{ github.event.push_id }}
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -f Dockerfile .
           docker tag $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG $ECR_REGISTRY/$ECR_REPOSITORY:latest
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
@@ -88,12 +84,8 @@ jobs:
 
       - name: git info check
         run: |
-          echo "github.event.push_id"
-          echo ${{ github.event.push_id }}
           echo "github.sha"
           echo ${{ github.sha }}
-          echo "github.head_ref"
-          echo ${{ github.head_ref }}
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
@@ -110,7 +102,7 @@ jobs:
 
       - name: Terraform Plan
         id: plan
-        run: terraform plan -var-file=vars/dev.tfvars -var=image_tag=latest -var=access_key=${{ secrets.AWS_ACCESS_KEY_ID }} -var=secret_key=${{ secrets.AWS_SECRET_ACCESS_KEY }} -out tfplan
+        run: terraform plan -var-file=vars/dev.tfvars -var=image_tag=${{ github.sha }} -var=access_key=${{ secrets.AWS_ACCESS_KEY_ID }} -var=secret_key=${{ secrets.AWS_SECRET_ACCESS_KEY }} -out tfplan
 
       - name: Terraform Apply
         id: apply
