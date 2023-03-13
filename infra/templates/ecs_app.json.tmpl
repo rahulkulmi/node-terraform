@@ -18,6 +18,8 @@
         "containerPort": ${app_port},
         "hostPort": ${app_port}
       }
-    ]
+    ],
+    "environment": [${env_config}],
+    "secrets": [${secret_config}]
   }
 ]
