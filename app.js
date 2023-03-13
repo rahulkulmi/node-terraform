@@ -7,7 +7,7 @@ app.get('/', function (req, res) {
 });
 
 app.get('/user', function (req, res) {
-    res.send('Main page user get api.');
+    res.send('Main page user get api testing.');
 });
 
 app.get('/test', function (req, res) {
