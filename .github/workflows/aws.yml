@@ -5,6 +5,14 @@ on:
     branches: ["main", "release/*"]
   pull_request:
     branches: ["main", "release/*"]
+  release:
+    types: [published]
+  # workflow_dispatch:
+  #   inputs:
+  #     releaseType:
+  #       description: 'Where to release (staging or prod)?'
+  #       required: true
+  #       default: 'staging'
 
 env:
   AWS_REGION: us-west-2
@@ -129,7 +137,7 @@ jobs:
 
   DeployPROD:
     name: Deploy on PROD
-    if: github.event.ref == 'refs/heads/release/'
+    # if: github.event.ref == 'refs/heads/release/'
     needs: [Build]
     runs-on: ubuntu-latest
     environment:
