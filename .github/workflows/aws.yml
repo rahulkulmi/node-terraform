@@ -130,7 +130,6 @@ jobs:
 
   DeployPROD:
     name: Deploy on PROD
-    if: github.event.ref == 'refs/heads/release/'
     needs: [Build]
     runs-on: ubuntu-latest
     environment:
