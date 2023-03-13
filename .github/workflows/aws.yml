@@ -21,9 +21,6 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: infra/
 
     steps:
       - name: Checkout
@@ -36,6 +33,7 @@ jobs:
 
       - name: Terraform fmt
         id: fmt
+        working-directory: infra/
         run: terraform fmt -check
         continue-on-error: false
 
