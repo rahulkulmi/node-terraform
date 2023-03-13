@@ -7,7 +7,7 @@ aws_vpc_name = "newput-dev"
 
 env_vars = {
   NODE_ENV = "developmet",
-  DB_NAME = "test_db"
+  DB_NAME  = "test_db"
 }
 
 secret_arns = {

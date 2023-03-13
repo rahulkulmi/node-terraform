@@ -66,7 +66,7 @@ resource "aws_route_table" "private" {
 
 # Explicitly associate the newly created route tables to the private subnets (so they don't default to the main route table)
 resource "aws_route_table_association" "private" {
-  count = var.az_count
-  subnet_id = element(aws_subnet.private.*.id, count.index)
+  count          = var.az_count
+  subnet_id      = element(aws_subnet.private.*.id, count.index)
   route_table_id = element(aws_route_table.private.*.id, count.index)
 }
