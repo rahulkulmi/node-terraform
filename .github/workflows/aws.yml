@@ -202,4 +202,4 @@ jobs:
 
       - name: Terraform Destroy
         id: destroy
-        run: terraform destroy -var-file=vars/prod.tfvars -var=image_tag=${{ github.sha }} -var=access_key=${{ secrets.AWS_ACCESS_KEY_ID }} -var=secret_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        run: terraform destroy -auto-approve -var-file=vars/prod.tfvars -var=image_tag=${{ github.sha }} -var=access_key=${{ secrets.AWS_ACCESS_KEY_ID }} -var=secret_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}
