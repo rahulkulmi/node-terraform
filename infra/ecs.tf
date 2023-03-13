@@ -1,5 +1,4 @@
 resource "aws_ecs_cluster" "main" {
-  # name = "dev-cluster"
   name = var.cluster_name
 }
 
@@ -7,8 +6,6 @@ data "template_file" "app" {
   template = file("./templates/ecs_app.json.tmpl")
 
   vars = merge({
-    # app_image      = var.app_image
-    # app_image      = data.aws_ecr_repository.repo.repository_url # aws_ecr_repository.ecs_app.repository_url
     app_image      = "${data.aws_ecr_repository.repo.repository_url}:${var.image_tag}" # aws_ecr_repository.ecs_app.repository_url
     app_port       = var.app_port
     fargate_cpu    = var.fargate_cpu

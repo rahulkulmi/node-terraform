@@ -9,9 +9,9 @@ variable "aws_vpc_name" {
   default     = "newput-dev"
 }
 
-variable "dns_role" {
-  default = "arn:aws:iam::708980201424:role/newput-dev-Route53FullAccess"
-}
+# variable "dns_role" {
+#   default = "arn:aws:iam::708980201424:role/newput-dev-Route53FullAccess"
+# }
 
 variable "access_key" {
   description = "My AWS access key"
@@ -41,10 +41,10 @@ variable "az_count" {
   default     = "2"
 }
 
-variable "app_image" {
-  description = "Docker image to run in the ECS cluster"
-  default     = "newput/node-terraform:latest"
-}
+# variable "app_image" {
+#   description = "Docker image to run in the ECS cluster"
+#   default     = "newput/node-terraform:latest"
+# }
 
 variable "app_port" {
   description = "Port exposed by the docker image to redirect traffic to"
@@ -82,13 +82,13 @@ variable "aws_ecr_repository" {
   default     = "newput/node-terraform"
 }
 
-variable "image_name" {
-  description = " "
-  default     = "newput/node-terraform"
-}
+# variable "image_name" {
+#   description = "Image name for ECS Task"
+#   default     = "newput/node-terraform"
+# }
 
 variable "image_tag" {
-  description = "Image for ECS Task"
+  description = "Image tag for ECS Task"
   default     = "latest"
 }
 
