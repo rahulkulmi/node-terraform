@@ -1,4 +1,5 @@
 const express = require('express');
+const config = require('./config/config');
 const app = express();
 
 app.get('/', function (req, res) {
@@ -10,7 +11,12 @@ app.get('/user', function (req, res) {
 });
 
 app.get('/test', function (req, res) {
-  res.send('Main page test update checking testing get api.');
+  res.json({
+    msg: 'Main page test update checking testing get api',
+    NODE_ENV: config.NODE_ENV,
+    DB_NAME: config.DB_NAME,
+    DB_PASSWORD: config.DB_PASSWORD
+  });
 });
 
 app.listen(8080, function () {
